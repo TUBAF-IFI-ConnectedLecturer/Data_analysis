@@ -11,6 +11,20 @@ tabulate = "*"
 networkx = "*"
 scipy = "*"
 pyvis = "*"
+pillow = "*"
+cairosvg = "*"
+pydantic = "*"
+plotly = "*"
+pydot = "*"
+graphviz = "*"
+chromadb = "*"
+sentence_transformers = "*"
+datasketch = "*"
+langchain-ollama = "*"
+langchain = "*"
+typing = "*"
+numpy = "2.2.0"
+matplotlib-venn = {extras = ["shapely"], version = "*"}
 
 [dev-packages]
 

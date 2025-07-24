@@ -1,0 +1,26 @@
+# Defining data folder stucture
+folder_structure:
+  data_root_folder: &BASE /media/sz/Data/Connected_Lecturers/Opal_crosslab
+  raw_data_folder: &RAW !join [*BASE, /raw]
+  file_folder: &FILE_FOLDER !join [*RAW, /files]
+  content_folder: &CONTENT_FOLDER !join [*RAW, /content]
+  processed_data_folder: &PREPROCESSED !join [*BASE, /processed]
+
+files:
+  df_aimeta: &OPALSINGLEAIMETA !join [*RAW, /OPAL_ai_meta.p]
+  df_filesmeta: &OPALSINGLEFILESMETA !join [*RAW, /OPAL_files_meta.p]
+  df_opalmeta: &OPALSINGLEFILESATTRIB !join [*RAW, /OPAL_files_attrib.p]
+  df_opalmeta_filtered: &OPALMETA !join [*RAW, /OPAL_files_filtered.p]
+  df_opalcontent: &OPALCONTENT !join [*RAW, /OPAL_content.p]
+  df_keywordlist: &OPALKEYWORDLIST !join [*PREPROCESSED, /keyword_list.p]
+  df_ai_similarity: &OPALAI_SIMILARITY !join [*PREPROCESSED, /OPAL_ai_similaritiy.p]
+  df_keyword_cos_similarity: &OPAL_KEYWORD_COS_SIMILARITY !join [*PREPROCESSED, /cosine_keywords_similarity.p]
+  df_keyword_jaccard_similarity: &OPAL_KEYWORD_JACCARD_SIMILARITY !join [*PREPROCESSED, /jaccard_keyword_similarity.p]
+  df_keyword_weighted_jaccard_similarity: &OPAL_KEYWORD_WEIGHTED_JACCARD_SIMILARITY !join [*PREPROCESSED, /weighted_jaccard_keyword_similarity.p]
+  df_keyword_tfidf_cosine_similarity: &OPAL_KEYWORD_TFIDF_COSINE_SIMILARITY !join [*PREPROCESSED, /tfidf_cosine_keyword_similarity_optimized.p]
+  df_keyword_overlap_similarity: &OPAL_KEYWORD_OVERLAP_SIMILARITY !join [*PREPROCESSED, /overlap_coefficient_keyword_similarity.p]
+  df_keyword_dice_similarity: &OPAL_KEYWORD_DICE_SIMILARITY !join [*PREPROCESSED, /dice_coefficient_keyword_similarity.p]
+  df_keyword_hierarchical_similarity: &OPAL_KEYWORD_HIERARCHICAL_SIMILARITY !join [*PREPROCESSED, /ddc_keyword_hierarchical_similarity.p]
+  df_minhash_text_similarity: &OPAL_MINHASH_TEXT_SIMILARITY !join [*PREPROCESSED, /minhash_text_similarity_matrix.p]
+
+  df_similarity: &SIMILARITY !join [*PREPROCESSED, /similarity_all_metrics.p]

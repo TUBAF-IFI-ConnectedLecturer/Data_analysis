@@ -1,0 +1,25 @@
+import pandas as pd
+
+from ConfigManager import ConfigManager
+
+class DataLoader:
+    """Class for loading and processing data from a YAML file."""
+    
+    def __init__(self, config_path: str):
+        """Initialize with the path to the configuration file."""
+        self.config_path = config_path
+        self.config_manager = ConfigManager(config_path)
+    
+    def load_data(self, config_entry):
+        """Load data from a file and return it as a DataFrame."""
+        # Load the configuration
+        self.config_manager.load()
+        
+        # Get the data path from the configuration
+        data_path = self.config_manager.get(config_entry)
+        print(data_path)
+        
+        # Load the data into a DataFrame
+        df = pd.read_pickle(data_path)
+        
+        return df
