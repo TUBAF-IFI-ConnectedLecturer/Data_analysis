@@ -22,5 +22,6 @@ files:
   df_keyword_dice_similarity: &OPAL_KEYWORD_DICE_SIMILARITY !join [*PREPROCESSED, /dice_coefficient_keyword_similarity.p]
   df_keyword_hierarchical_similarity: &OPAL_KEYWORD_HIERARCHICAL_SIMILARITY !join [*PREPROCESSED, /ddc_keyword_hierarchical_similarity.p]
   df_minhash_text_similarity: &OPAL_MINHASH_TEXT_SIMILARITY !join [*PREPROCESSED, /minhash_text_similarity_matrix.p]
+  df_ddc: &OPAL_DDC_KEYWORDS !join [*PREPROCESSED, /ddc_keywords.p]
 
   df_similarity: &SIMILARITY !join [*PREPROCESSED, /similarity_all_metrics.p]

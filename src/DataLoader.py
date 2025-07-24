@@ -23,3 +23,14 @@ class DataLoader:
         df = pd.read_pickle(data_path)
         
         return df
+    
+    def save_data(self, df: pd.DataFrame, config_entry: str):
+        """Save a DataFrame to a file specified in the configuration."""
+        # Load the configuration
+        self.config_manager.load()
+        
+        # Get the data path from the configuration
+        data_path = self.config_manager.get(config_entry)
+        
+        # Save the DataFrame to the specified path
+        df.to_pickle(data_path)
