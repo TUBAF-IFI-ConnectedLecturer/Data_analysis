@@ -1,6 +1,6 @@
 # Defining data folder stucture
 folder_structure:
-  data_root_folder: &BASE /media/sz/Data/Connected_Lecturers/Opal_crosslab
+  data_root_folder: &BASE /media/sz/Data/Connected_Lecturers/Opal_transfer
   raw_data_folder: &RAW !join [*BASE, /raw]
   file_folder: &FILE_FOLDER !join [*RAW, /files]
   content_folder: &CONTENT_FOLDER !join [*RAW, /content]
@@ -23,5 +23,7 @@ files:
   df_keyword_hierarchical_similarity: &OPAL_KEYWORD_HIERARCHICAL_SIMILARITY !join [*PREPROCESSED, /ddc_keyword_hierarchical_similarity.p]
   df_minhash_text_similarity: &OPAL_MINHASH_TEXT_SIMILARITY !join [*PREPROCESSED, /minhash_text_similarity_matrix.p]
   df_ddc: &OPAL_DDC_KEYWORDS !join [*PREPROCESSED, /ddc_keywords.p]
+
+  df_similarity: &SIMILARITY !join [*PREPROCESSED, /similarity_all_metrics.p]
 
   

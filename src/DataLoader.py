@@ -2,8 +2,8 @@ import pandas as pd
 
 from ConfigManager import ConfigManager
 
-class DataLoader:
-    """Class for loading and processing data from a YAML file."""
+class DataHandler:
+    """Class for loading and saving data from/to files based on YAML configuration."""
     
     def __init__(self, config_path: str):
         """Initialize with the path to the configuration file."""
