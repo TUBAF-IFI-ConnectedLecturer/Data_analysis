@@ -17,11 +17,16 @@ class DataHandler:
         
         # Get the data path from the configuration
         data_path = self.config_manager.get(config_entry)
-        print(data_path)
         
-        # Load the data into a DataFrame
+        # Show which file is being loaded
+        from pathlib import Path
+        file_name = Path(data_path).name
+        print(f"📂 Lade: {file_name}")
+        
+        # Load the DataFrame from the specified path
         df = pd.read_pickle(data_path)
         
+        print(f"   ✅ Geladen: {df.shape[0]:,} Zeilen × {df.shape[1]} Spalten")
         return df
     
     def save_data(self, df: pd.DataFrame, config_entry: str):
