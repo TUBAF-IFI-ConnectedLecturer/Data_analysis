@@ -1,29 +1,76 @@
-# Defining data folder stucture
+# ============================================================================
+# OPAL Data Analysis Configuration
+# ============================================================================
+
+# 📁 FOLDER STRUCTURE
 folder_structure:
-  data_root_folder: &BASE /media/sz/Data/Connected_Lecturers/Opal_transfer
-  raw_data_folder: &RAW !join [*BASE, /raw]
-  file_folder: &FILE_FOLDER !join [*RAW, /files]
-  content_folder: &CONTENT_FOLDER !join [*RAW, /content]
-  processed_data_folder: &PREPROCESSED !join [*BASE, /processed]
+  data_root: &BASE /media/sz/Data/Connected_Lecturers/Opal
+  
+  # Raw Data Folders
+  raw_data_root: &RAW !join [*BASE, /raw]
+  raw_files: &RAW_FILES !join [*RAW, /files]
+  raw_content: &RAW_CONTENT !join [*RAW, /content]
+  
+  # Processed Data Folders
+  processed_data_root: &PROCESSED !join [*BASE, /processed]
+  processed_similarity: &SIMILARITY_FOLDER !join [*PROCESSED, /similarity]
+  processed_keywords: &KEYWORDS_FOLDER !join [*PROCESSED, /keywords]
+  processed_analysis: &ANALYSIS_FOLDER !join [*PROCESSED, /analysis]
 
-files:
-  df_aimeta: &OPALSINGLEAIMETA !join [*RAW, /OPAL_ai_meta.p]
-  df_filesmeta: &OPALSINGLEFILESMETA !join [*RAW, /OPAL_files_meta.p]
-  df_opalmeta: &OPALSINGLEFILESATTRIB !join [*RAW, /OPAL_files_attrib.p]
-  df_opalmeta_filtered: &OPALMETA !join [*RAW, /OPAL_files_filtered.p]
-  df_opalcontent: &OPALCONTENT !join [*RAW, /OPAL_content.p]
-  df_keywordlist: &OPALKEYWORDLIST !join [*PREPROCESSED, /keyword_list.p]
-  df_ai_similarity: &OPALAI_SIMILARITY !join [*PREPROCESSED, /OPAL_ai_similaritiy.p]
-  df_keyword_cos_similarity: &OPAL_KEYWORD_COS_SIMILARITY !join [*PREPROCESSED, /cosine_keywords_similarity.p]
-  df_keyword_jaccard_similarity: &OPAL_KEYWORD_JACCARD_SIMILARITY !join [*PREPROCESSED, /jaccard_keyword_similarity.p]
-  df_keyword_weighted_jaccard_similarity: &OPAL_KEYWORD_WEIGHTED_JACCARD_SIMILARITY !join [*PREPROCESSED, /weighted_jaccard_keyword_similarity.p]
-  df_keyword_tfidf_cosine_similarity: &OPAL_KEYWORD_TFIDF_COSINE_SIMILARITY !join [*PREPROCESSED, /tfidf_cosine_keyword_similarity_optimized.p]
-  df_keyword_overlap_similarity: &OPAL_KEYWORD_OVERLAP_SIMILARITY !join [*PREPROCESSED, /overlap_coefficient_keyword_similarity.p]
-  df_keyword_dice_similarity: &OPAL_KEYWORD_DICE_SIMILARITY !join [*PREPROCESSED, /dice_coefficient_keyword_similarity.p]
-  df_keyword_hierarchical_similarity: &OPAL_KEYWORD_HIERARCHICAL_SIMILARITY !join [*PREPROCESSED, /ddc_keyword_hierarchical_similarity.p]
-  df_minhash_text_similarity: &OPAL_MINHASH_TEXT_SIMILARITY !join [*PREPROCESSED, /minhash_text_similarity_matrix.p]
-  df_ddc: &OPAL_DDC_KEYWORDS !join [*PREPROCESSED, /ddc_keywords.p]
+# ============================================================================
+# 📊 DATA FILES CONFIGURATION
+# ============================================================================
 
-  df_similarity: &SIMILARITY !join [*PREPROCESSED, /similarity_all_metrics.p]
+data_files:
+  
+  # 📂 RAW DATA FILES (Input/Original Data)
+  raw_data:
+    # OPAL Metadata
+    df_aimeta: !join [*RAW, /OPAL_ai_meta.p]
+    df_filesmeta: !join [*RAW, /OPAL_files_meta.p]
+    df_opalmeta: !join [*RAW, /OPAL_files_attrib.p]
+    df_opalmeta_filtered: !join [*RAW, /OPAL_files_filtered.p]
+    df_opalcontent: !join [*RAW, /OPAL_content.p]
+  
+  # 📈 PROCESSED DATA FILES (Generated/Computed Data)
+  processed_data:
+    
+    # Keywords & Classification
+    keywords:
+      df_keywordlist: !join [*KEYWORDS_FOLDER, /keyword_list.p]
+      df_ddc: !join [*KEYWORDS_FOLDER, /ddc_keywords.p]
+    
+    # Similarity Matrices - Keyword-based
+    similarity_keyword_based:
+      df_keyword_cos_similarity: !join [*SIMILARITY_FOLDER, /keyword_cosine_similarity.p]
+      df_keyword_jaccard_similarity: !join [*SIMILARITY_FOLDER, /keyword_jaccard_similarity.p]
+      df_keyword_weighted_jaccard_similarity: !join [*SIMILARITY_FOLDER, /keyword_weighted_jaccard_similarity.p]
+      df_keyword_tfidf_cosine_similarity: !join [*SIMILARITY_FOLDER, /keyword_tfidf_cosine_similarity.p]
+      df_keyword_overlap_similarity: !join [*SIMILARITY_FOLDER, /keyword_overlap_similarity.p]
+      df_keyword_dice_similarity: !join [*SIMILARITY_FOLDER, /keyword_dice_similarity.p]
+      df_keyword_hierarchical_similarity: !join [*SIMILARITY_FOLDER, /keyword_hierarchical_similarity.p]
+    
+    # Similarity Matrices - Content-based
+    similarity_content_based:
+      df_ai_similarity: !join [*SIMILARITY_FOLDER, /ai_similarity_matrix.p]
+      df_minhash_text_similarity: !join [*SIMILARITY_FOLDER, /minhash_text_similarity.p]
+    
+    # Combined Analysis Results
+    combined_analysis:
+      df_similarity: !join [*ANALYSIS_FOLDER, /similarity_all_metrics.p]
+
+# ============================================================================
+# �️ FOLDER STRUCTURE
+# ============================================================================
+
+folder_structure:
+  data_root: *BASE
+  raw_data_root: *RAW
+  raw_files: *RAW_FILES
+  raw_content: *RAW_CONTENT
+  processed_data_root: *PROCESSED
+  processed_similarity: *SIMILARITY_FOLDER
+  processed_keywords: *KEYWORDS_FOLDER
+  processed_analysis: *ANALYSIS_FOLDER
 
   
