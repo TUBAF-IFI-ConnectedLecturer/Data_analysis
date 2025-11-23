@@ -25,6 +25,7 @@ langchain = "*"
 typing = "*"
 numpy = "2.2.0"
 matplotlib-venn = {extras = ["shapely"], version = "*"}
+kaleido = "*"
 
 [dev-packages]
 
